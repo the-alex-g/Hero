@@ -23,6 +23,7 @@ var _state = State.IDLE
 var _jumping := false
 var _gravity_effect := 0.0
 var _time_off_ground := 0.0
+var _can_jump := true
 
 # onready variables
 onready var collision := $CollisionShape2D
@@ -39,8 +40,9 @@ func _process(delta:float)->void:
 		velocity.x -= 1
 	if Input.is_action_pressed(_action_key+"right"):
 		velocity.x += 1
-	if Input.is_action_just_pressed(_action_key+"jump"):
+	if Input.is_action_just_pressed(_action_key+"jump") and _can_jump:
 		_jumping = true
+		_can_jump = false
 		_time_off_ground = 0.0
 	
 	if not is_on_floor():
@@ -49,6 +51,7 @@ func _process(delta:float)->void:
 	else:
 		if _time_off_ground != 0.0:
 			_time_off_ground = 0.0
+			_can_jump = true
 	
 	if _jumping:
 		y_force -= jump_strength

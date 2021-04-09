@@ -13,11 +13,5 @@ extents = Vector2( 194.782, 10 )
 position = Vector2( 381.534, 468.89 )
 shape = SubResource( 1 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2( 747.534, 361.89 )
-shape = SubResource( 1 )
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 376, 301 )
