@@ -6,13 +6,14 @@ extends KinematicBody2D
 const UP_VECTOR := Vector2.UP
 
 # enums
-enum State {WALKING, IDLE}
+enum State {WALKING, IDLE, ATTACKING}
 
 # exported variables
 export var speed := 200
 export var jump_time := 2.0
 export var max_gravity := 400
 export var jump_strength := 200
+export var attack_cooldown_time := 0.5
 
 # normal variables
 var color := Color.white
@@ -24,9 +25,12 @@ var _jumping := false
 var _gravity_effect := 0.0
 var _time_off_ground := 0.0
 var _can_jump := true
+var _can_attack := true
+var _smash_attack := false
 
 # onready variables
 onready var collision := $CollisionShape2D
+onready var _attack_cooldown_timer := $AttackCooldownTimer
 
 
 func _ready()->void:
@@ -44,6 +48,8 @@ func _process(delta:float)->void:
 		_jumping = true
 		_can_jump = false
 		_time_off_ground = 0.0
+	if Input.is_action_just_pressed(_action_key+"attack") and _can_attack:
+		_attack()
 	
 	if not is_on_floor():
 		_gravity_effect = _calculate_gravity(delta)
@@ -70,6 +76,11 @@ func _process(delta:float)->void:
 	_ignore = move_and_slide(velocity, UP_VECTOR)
 
 
+func _attack():
+	_can_attack = false
+	_attack_cooldown_timer.start(attack_cooldown_time)
+
+
 func _calculate_gravity(delta:float)->float:
 	if _time_off_ground < 1:
 		_time_off_ground += delta
@@ -90,3 +101,7 @@ func _draw():
 				draw_circle(Vector2(height/2,0), radius, color)
 				draw_circle(-Vector2(height/2,0), radius, color)
 				draw_rect(Rect2(-Vector2(height, radius*2)/2, Vector2(height, radius*2)), color)
+
+
+func _on_AttackCooldownTimer_timeout():
+	_can_attack = true
