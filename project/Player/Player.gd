@@ -31,6 +31,8 @@ var _smash_attack := false
 # onready variables
 onready var collision := $CollisionShape2D
 onready var _attack_cooldown_timer := $AttackCooldownTimer
+onready var _animations := $AnimationPlayer
+onready var _body := $Body
 
 
 func _ready()->void:
@@ -68,12 +70,21 @@ func _process(delta:float)->void:
 	velocity = velocity.normalized()
 	velocity.y += y_force
 	
-	if velocity != Vector2.ZERO:
+	if velocity.x != 0:
+		_body.scale.x = 0.5 if velocity.x > 0 else -0.5
 		_state = State.WALKING
 		velocity.x *= speed
 	else:
 		_state = State.IDLE
 	_ignore = move_and_slide(velocity, UP_VECTOR)
+	_get_animation()
+
+
+func _get_animation():
+	if _state == State.WALKING:
+		_animations.play("Walk")
+	elif _state == State.IDLE:
+		_animations.play("Idle")
 
 
 func _attack():
@@ -85,22 +96,6 @@ func _calculate_gravity(delta:float)->float:
 	if _time_off_ground < 1:
 		_time_off_ground += delta
 	return lerp(0.0, max_gravity, _time_off_ground)
-
-
-func _draw():
-	if collision != null:
-		var shape = collision.get_shape()
-		if shape is CapsuleShape2D:
-			var radius = shape.radius
-			var height = shape.height
-			if collision.rotation_degrees != 270 and collision.rotation_degrees != 90:
-				draw_circle(Vector2(0,height/2), radius, color)
-				draw_circle(-Vector2(0,height/2), radius, color)
-				draw_rect(Rect2(-Vector2(radius*2, height)/2, Vector2(radius*2, height)), color)
-			else:
-				draw_circle(Vector2(height/2,0), radius, color)
-				draw_circle(-Vector2(height/2,0), radius, color)
-				draw_rect(Rect2(-Vector2(height, radius*2)/2, Vector2(height, radius*2)), color)
 
 
 func _on_AttackCooldownTimer_timeout():

@@ -1,15 +1,513 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Art/armpiecetwo.png" type="Texture" id=2]
+[ext_resource path="res://Art/legpiece.png" type="Texture" id=3]
+[ext_resource path="res://Art/foot.png" type="Texture" id=4]
+[ext_resource path="res://Art/armpiece.png" type="Texture" id=5]
+[ext_resource path="res://Art/shield.png" type="Texture" id=6]
+[ext_resource path="res://Art/sword.png" type="Texture" id=7]
+[ext_resource path="res://Art/sideviewofhead.png" type="Texture" id=8]
+[ext_resource path="res://Art/torso.png" type="Texture" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
+radius = 30.0
+height = 75.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Torso/RemoteTransform2D2/RemoteTransform2D/RemoteTransform2D2:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -148.618, -158.796 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Torso/RemoteTransform2D/RemoteTransform2D3:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -3.35646 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Torso/RemoteTransform2D:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -25.071 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Torso/RemoteTransform2D2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 3.62347, 11.5543 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Torso/RemoteTransform2D2/RemoteTransform2D:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -209.86, -193.484 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body/Torso/UpperLeg:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -174.272 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Body/Torso/UpperLeg/LowerLeg:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -37.9232 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Body/Torso/UpperArm:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 51.098, 43.1083 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Body/Torso/UpperArm/LowerArm:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -176.615, -181.409 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Body/Torso/UpperArm/LowerArm/Shield:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 197.101 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Body/Torso:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -2.69051, -2.69051 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Body/Torso/Head:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2.06959, 10.3941 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Walk"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Torso/RemoteTransform2D2/RemoteTransform2D/RemoteTransform2D2:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -148.618, -179.964, -148.618, -171.023 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Torso/RemoteTransform2D/RemoteTransform2D3:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -3.35646, 51.1414, -3.35646, 21.1957 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Torso/RemoteTransform2D:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -25.071, -76.0652, -25.071, 27.7807 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Torso/RemoteTransform2D2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3.62347, 81.9923, 3.62347, -42.381 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Torso/RemoteTransform2D2/RemoteTransform2D:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -209.86, -202.177, -209.86, -230.807 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body/Torso/UpperLeg:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -174.272, -132.966, -174.272, -235.285 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Body/Torso/UpperLeg/LowerLeg:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -37.9232, -71.1197, -37.9232, -88.439 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Body/Torso/UpperArm:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 51.098, 1.79169, 51.098, 86.6025 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Body/Torso/UpperArm/LowerArm:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -176.615, -220.577, -176.615, -226.299 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Body/Torso/UpperArm/LowerArm/Shield:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.3, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 197.101, 197.101, 197.101, 228.731 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Body/Torso:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.3, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -2.69051, -2.69051, -2.69051, -2.69051 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Body/Torso/Head:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.3, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.06959, 15.8744, 2.06959, 13.7374 ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ -267.469 ]
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 11.1362 )
 shape = SubResource( 1 )
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Body" type="Node2D" parent="."]
+position = Vector2( -2.22726, 8.01807 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="UpperArm2" type="Sprite" parent="Body"]
+position = Vector2( 33.2503, -43.218 )
+rotation = 0.0212844
+texture = ExtResource( 5 )
+offset = Vector2( 11.3853, 40.069 )
+
+[node name="LowerArm" type="Sprite" parent="Body/UpperArm2"]
+position = Vector2( 15.7646, 74.1148 )
+rotation = 2.63077
+texture = ExtResource( 2 )
+offset = Vector2( -25.6847, -21.5091 )
+
+[node name="Sword" type="Sprite" parent="Body/UpperArm2/LowerArm"]
+position = Vector2( -37.0801, -56.6304 )
+rotation = -2.60029
+texture = ExtResource( 7 )
+offset = Vector2( 30.1201, -64.463 )
+
+[node name="UpperLeg2" type="Sprite" parent="Body"]
+position = Vector2( 25.6119, 37.1753 )
+rotation = -0.48453
+scale = Vector2( 1, 1 )
+texture = ExtResource( 3 )
+offset = Vector2( -2.3811, 24.6047 )
+__meta__ = {
+"_edit_ik_": true
+}
+
+[node name="LowerLeg" type="Sprite" parent="Body/UpperLeg2"]
+position = Vector2( -12.3144, 50.9192 )
+rotation = -0.0585813
+texture = ExtResource( 4 )
+offset = Vector2( -6.34961, 12.6992 )
+__meta__ = {
+"_edit_ik_": true
+}
+
+[node name="Torso" type="Sprite" parent="Body"]
+position = Vector2( -0.344635, -30.3118 )
+rotation = -0.0469582
+texture = ExtResource( 9 )
+offset = Vector2( 1.88077, 32.3768 )
+__meta__ = {
+"_edit_ik_": true
+}
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Torso"]
+position = Vector2( 22.76, 68.6311 )
+rotation = -0.437572
+remote_path = NodePath("../../UpperLeg2")
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="RemoteTransform2D3" type="RemoteTransform2D" parent="Body/Torso/RemoteTransform2D"]
+position = Vector2( -12.3144, 50.9192 )
+rotation = -0.0585813
+remote_path = NodePath("../../../UpperLeg2/LowerLeg")
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="Position2D" type="Position2D" parent="Body/Torso/RemoteTransform2D/RemoteTransform2D3"]
+position = Vector2( -21.4299, 25.3984 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Body/Torso"]
+position = Vector2( 34.1637, -11.315 )
+rotation = 0.0682427
+remote_path = NodePath("../../UpperArm2")
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Torso/RemoteTransform2D2"]
+position = Vector2( 15.7646, 74.1148 )
+rotation = -3.65242
+remote_path = NodePath("../../../UpperArm2/LowerArm")
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Body/Torso/RemoteTransform2D2/RemoteTransform2D"]
+position = Vector2( -37.0801, -56.6304 )
+rotation = -2.60029
+remote_path = NodePath("../../../../UpperArm2/LowerArm/Sword")
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="Position2D" type="Position2D" parent="Body/Torso/RemoteTransform2D2/RemoteTransform2D/RemoteTransform2D2"]
+position = Vector2( 59.4328, -124.578 )
+rotation = -2.98023e-08
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="UpperLeg" type="Sprite" parent="Body/Torso"]
+position = Vector2( -19.2327, 73.2299 )
+rotation = -3.04162
+scale = Vector2( 1, -1 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, 20.6362 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="LowerLeg" type="Sprite" parent="Body/Torso/UpperLeg"]
+position = Vector2( -7.17938, 49.8002 )
+rotation = -0.661885
+texture = ExtResource( 4 )
+offset = Vector2( -9.59338, 15.3098 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="Position2D" type="Position2D" parent="Body/Torso/UpperLeg/LowerLeg"]
+position = Vector2( -24.7665, 30.3512 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="UpperArm" type="Sprite" parent="Body/Torso"]
+position = Vector2( -17.1867, -15.0498 )
+rotation = 0.88679
+texture = ExtResource( 5 )
+offset = Vector2( 4.83343, 37.3286 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="LowerArm" type="Sprite" parent="Body/Torso/UpperArm"]
+position = Vector2( 12.9281, 73.256 )
+rotation = -3.08554
+texture = ExtResource( 2 )
+offset = Vector2( -23.4522, -16.3995 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="Shield" type="Sprite" parent="Body/Torso/UpperArm/LowerArm"]
+position = Vector2( -52.4921, -41.8638 )
+rotation = 3.44006
+scale = Vector2( -1, 1 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="Position2D" type="Position2D" parent="Body/Torso/UpperArm/LowerArm/Shield"]
+position = Vector2( -4.3244, 34.8715 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Head" type="Sprite" parent="Body/Torso"]
+position = Vector2( 2.1225, -43.3555 )
+rotation = 0.0413706
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 3 )
+anims/Walk = SubResource( 2 )
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_AttackCooldownTimer_timeout"]
