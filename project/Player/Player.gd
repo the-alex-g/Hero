@@ -40,12 +40,11 @@ func _process(delta:float)->void:
 	if Input.is_action_pressed(_action_key+"right"):
 		velocity.x += 1
 	if Input.is_action_just_pressed(_action_key+"jump"):
-		_jump()
+		_jumping = true
+		_time_off_ground = 0.0
 	
 	if not is_on_floor():
-		if _time_off_ground < 1:
-			_time_off_ground += delta
-		_gravity_effect = lerp(0.0, max_gravity, _time_off_ground)
+		_gravity_effect = _calculate_gravity(delta)
 		y_force += _gravity_effect
 	else:
 		if _time_off_ground != 0.0:
@@ -63,12 +62,15 @@ func _process(delta:float)->void:
 	if velocity != Vector2.ZERO:
 		_state = State.WALKING
 		velocity.x *= speed
+	else:
+		_state = State.IDLE
 	_ignore = move_and_slide(velocity, UP_VECTOR)
 
 
-func _jump():
-	_jumping = true
-	_time_off_ground = 0.0
+func _calculate_gravity(delta:float)->float:
+	if _time_off_ground < 1:
+		_time_off_ground += delta
+	return lerp(0.0, max_gravity, _time_off_ground)
 
 
 func _draw():
