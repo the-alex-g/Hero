@@ -29,6 +29,7 @@ var _can_attack := true
 var _smash_attack := false
 var _attacking := false
 var _was_attacking := false
+var _was_jumping := false
 var _damage := 1.0
 
 # onready variables
@@ -37,6 +38,7 @@ onready var _attack_cooldown_timer := $AttackCooldownTimer
 onready var _animation_tree := $AnimationTree
 onready var _sword_hit_area := $Body/HitArea
 onready var _smash_area := $Body/SmashArea
+onready var _floor_detector := $FloorDetector
 
 
 func _ready()->void:
@@ -56,6 +58,7 @@ func _physics_process(delta:float)->void:
 	
 	if Input.is_action_just_pressed(_action_key+"jump") and _can_jump:
 		_jumping = true
+		_was_jumping = false
 		_can_jump = false
 		_time_off_ground = 0.0
 	
@@ -65,7 +68,7 @@ func _physics_process(delta:float)->void:
 	if Input.is_action_just_pressed(_action_key+"smash_attack") and _can_attack:
 		_smash_attack()
 	
-	if not is_on_floor():
+	if not _is_on_floor():
 		_gravity_effect = _calculate_gravity(delta)
 		y_force += _gravity_effect
 	else:
@@ -88,9 +91,9 @@ func _physics_process(delta:float)->void:
 		velocity.x *= speed
 	elif velocity.x == 0:
 		_state = State.IDLE
-#	if not is_on_floor():
-#		_state = State.AIRBORNE
-	if is_on_floor() and _smash_attack:
+	if not _is_on_floor():
+		_state = State.AIRBORNE
+	if _is_on_floor() and _smash_attack:
 		_execute_smash()
 	_ignore = move_and_slide(velocity, UP_VECTOR)
 	_get_animation()
@@ -118,6 +121,9 @@ func _get_animation()->void:
 	var jump_hit := 0.0
 	var idle_hit := 0.0
 	
+	# values from 0 (jumping) to 1 (falling)
+	var jump := 0.0
+	
 	# values from -1 (walking) through 0 (jumping) to 1 (idle)
 	var master_action := 0.0
 	
@@ -127,10 +133,13 @@ func _get_animation()->void:
 	elif _state == State.IDLE:
 		master_action = 1.0
 	
-	_set_animation(idle_hit, jump_hit, walk_hit, master_action)
+	elif _state == State.AIRBORNE:
+		master_action = 0.0
+	
+	_set_animation(idle_hit, jump_hit, walk_hit, jump, master_action)
 
 
-func _set_animation(idle:float, jump:float, walk:float, master_value:float)->void:
+func _set_animation(idle:float, jump:float, walk:float, jump_or_fall:float,  master_value:float)->void:
 	# master is -1: walk, 0: jump, 1: idle
 	# the others are 0: base, 1: hit
 	if _attacking:
@@ -142,8 +151,16 @@ func _set_animation(idle:float, jump:float, walk:float, master_value:float)->voi
 			_animation_tree.set("parameters/JumpHitSeek/seek_position", 0)
 			_animation_tree.set("parameters/WalkHitSeek/seek_position", 0)
 			_was_attacking = true
+	if _jumping:
+		jump_or_fall = 0.0
+		if not _was_jumping:
+			_animation_tree.set("parameters/JumpSeek/seek_position", 0)
+			_was_jumping = true
+	else:
+		jump_or_fall = 1.0
+	_animation_tree.set("parameters/FallJump/add_amount", jump_or_fall)
 	_animation_tree.set("parameters/WalkHit/add_amount", walk)
-	_animation_tree.set("parameters/JumpHit/add_amount", jump)
+	_animation_tree.set("parameters/AirborneHit/add_amount", jump)
 	_animation_tree.set("parameters/IdleHit/add_amount", idle)
 	_animation_tree.set("parameters/Master/blend_amount", master_value)
 
@@ -178,3 +195,10 @@ func _stop_attacking_animations()->void:
 	_animation_tree.set("parameters/WalkHit/add_amount", 0.0)
 	_animation_tree.set("parameters/JumpHit/add_amount", 0.0)
 	_animation_tree.set("parameters/IdleHit/add_amount", 0.0)
+
+
+func _is_on_floor()->bool:
+	var is_detecting := false
+	if _floor_detector.is_colliding():
+		is_detecting = true
+	return is_detecting

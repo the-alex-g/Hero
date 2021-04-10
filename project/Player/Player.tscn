@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art/armpiecetwo.png" type="Texture" id=2]
@@ -440,6 +440,7 @@ tracks/11/keys = {
 
 [sub_resource type="Animation" id=7]
 resource_name = "Jump"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Torso/RemoteTransform2D/RemoteTransform2D3:rotation_degrees")
 tracks/0/interp = 1
@@ -447,10 +448,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -3.35646, 38.3323, -3.35646 ]
+"values": [ -3.35646, 38.3323 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Torso/RemoteTransform2D:rotation_degrees")
@@ -459,10 +460,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -20.0631, -68.7794, -20.0631 ]
+"values": [ -20.0631, -68.7794 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Torso:rotation_degrees")
@@ -471,10 +472,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -2.69051, -2.69051, -2.69051 ]
+"values": [ -2.69051, -2.69051 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Torso/RemoteTransform2D2:rotation_degrees")
@@ -483,10 +484,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 3.62347, -57.5344, 3.62347 ]
+"values": [ 3.62347, -57.5344 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Body/Torso/UpperLeg/LowerLeg:rotation_degrees")
@@ -495,10 +496,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -37.9232, -37.9232, -37.9232 ]
+"values": [ -37.9232, -37.9232 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Body/Torso/UpperLeg:rotation_degrees")
@@ -507,10 +508,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -174.272, -131.239, -174.272 ]
+"values": [ -174.272, -131.239 ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Body/Torso/UpperArm:rotation_degrees")
@@ -519,10 +520,10 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 51.098, 88.0206, 51.098 ]
+"values": [ 51.098, 88.0206 ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Body/Torso/UpperArm/LowerArm:rotation_degrees")
@@ -531,10 +532,10 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -176.615, -176.615, -176.615 ]
+"values": [ -176.615, -176.615 ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Body/Torso/RemoteTransform2D/RemoteTransform2D3/Position2D:rotation_degrees")
@@ -543,10 +544,10 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 0.0 ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("Body/Torso/UpperArm/LowerArm/Shield/Position2D:rotation_degrees")
@@ -555,10 +556,10 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 0.0 ]
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("Body/Torso/UpperArm/LowerArm/Shield:rotation_degrees")
@@ -567,10 +568,10 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 197.101, 197.101, 197.101 ]
+"values": [ 197.101, 197.101 ]
 }
 tracks/11/type = "value"
 tracks/11/path = NodePath("Body/Torso/UpperLeg/LowerLeg/Position2D:rotation_degrees")
@@ -579,10 +580,10 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 0.0 ]
 }
 tracks/12/type = "value"
 tracks/12/path = NodePath("Body/Torso/RemoteTransform2D2/RemoteTransform2D/RemoteTransform2D2/Position2D:rotation_degrees")
@@ -591,10 +592,10 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -28.0721, -28.0721, -28.0721 ]
+"values": [ -28.0721, -28.0721 ]
 }
 tracks/13/type = "value"
 tracks/13/path = NodePath("Body/Torso/RemoteTransform2D2/RemoteTransform2D/RemoteTransform2D2:rotation_degrees")
@@ -603,10 +604,10 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -148.618, -148.618, -148.618 ]
+"values": [ -148.618, -148.618 ]
 }
 tracks/14/type = "value"
 tracks/14/path = NodePath("Body/Torso/RemoteTransform2D2/RemoteTransform2D:rotation_degrees")
@@ -615,10 +616,10 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -209.86, -209.86, -209.86 ]
+"values": [ -209.86, -209.86 ]
 }
 tracks/15/type = "value"
 tracks/15/path = NodePath("Body/Torso/Head:rotation_degrees")
@@ -627,10 +628,10 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 2.06959, 2.06959, 2.06959 ]
+"values": [ 2.06959, 2.06959 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -781,11 +782,18 @@ tracks/11/keys = {
 "values": [ 2.06959, 15.8744, 2.06959, 13.7374 ]
 }
 
+[sub_resource type="AnimationNodeAdd2" id=15]
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "Fall"
+
 [sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Jump"
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Walk"
+
+[sub_resource type="AnimationNodeAdd2" id=24]
 
 [sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Idle"
@@ -797,14 +805,14 @@ animation = "Hit"
 
 [sub_resource type="AnimationNodeTimeSeek" id=14]
 
-[sub_resource type="AnimationNodeAdd2" id=15]
-
 [sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Hit"
 
 [sub_resource type="AnimationNodeTimeSeek" id=17]
 
-[sub_resource type="AnimationNodeBlend3" id=23]
+[sub_resource type="AnimationNodeTimeSeek" id=25]
+
+[sub_resource type="AnimationNodeBlend3" id=18]
 
 [sub_resource type="AnimationNodeAdd2" id=19]
 
@@ -814,11 +822,17 @@ animation = "Hit"
 [sub_resource type="AnimationNodeTimeSeek" id=21]
 
 [sub_resource type="AnimationNodeBlendTree" id=22]
-graph_offset = Vector2( 0, -98.5 )
+graph_offset = Vector2( 0, 57.75 )
+nodes/AirborneHit/node = SubResource( 15 )
+nodes/AirborneHit/position = Vector2( 520, 280 )
 nodes/Animation/node = SubResource( 10 )
 nodes/Animation/position = Vector2( 400, -120 )
+"nodes/Animation 2/node" = SubResource( 23 )
+"nodes/Animation 2/position" = Vector2( 100, 300 )
 "nodes/Animation 3/node" = SubResource( 9 )
-"nodes/Animation 3/position" = Vector2( 160, 300 )
+"nodes/Animation 3/position" = Vector2( 0, 140 )
+nodes/FallJump/node = SubResource( 24 )
+nodes/FallJump/position = Vector2( 360, 220 )
 nodes/Idle/node = SubResource( 11 )
 nodes/Idle/position = Vector2( 360, 540 )
 nodes/IdleHit/node = SubResource( 12 )
@@ -827,13 +841,13 @@ nodes/IdleHitAnim/node = SubResource( 13 )
 nodes/IdleHitAnim/position = Vector2( 200, 660 )
 nodes/IdleHitSeek/node = SubResource( 14 )
 nodes/IdleHitSeek/position = Vector2( 400, 680 )
-nodes/JumpHit/node = SubResource( 15 )
-nodes/JumpHit/position = Vector2( 520, 280 )
 nodes/JumpHitAnim/node = SubResource( 16 )
 nodes/JumpHitAnim/position = Vector2( 100, 420 )
 nodes/JumpHitSeek/node = SubResource( 17 )
 nodes/JumpHitSeek/position = Vector2( 320, 420 )
-nodes/Master/node = SubResource( 23 )
+nodes/JumpSeek/node = SubResource( 25 )
+nodes/JumpSeek/position = Vector2( 200, 140 )
+nodes/Master/node = SubResource( 18 )
 nodes/Master/position = Vector2( 867, -11 )
 nodes/WalkHit/node = SubResource( 19 )
 nodes/WalkHit/position = Vector2( 580, -100 )
@@ -842,7 +856,7 @@ nodes/WalkHitAnim/position = Vector2( 180, 0 )
 nodes/WalkHitSeek/node = SubResource( 21 )
 nodes/WalkHitSeek/position = Vector2( 400, 0 )
 nodes/output/position = Vector2( 1120, 260 )
-node_connections = [ "output", 0, "Master", "Master", 0, "WalkHit", "Master", 1, "JumpHit", "Master", 2, "IdleHit", "WalkHit", 0, "Animation", "WalkHit", 1, "WalkHitSeek", "WalkHitSeek", 0, "WalkHitAnim", "IdleHit", 0, "Idle", "IdleHit", 1, "IdleHitSeek", "IdleHitSeek", 0, "IdleHitAnim", "JumpHitSeek", 0, "JumpHitAnim", "JumpHit", 0, "Animation 3", "JumpHit", 1, "JumpHitSeek" ]
+node_connections = [ "output", 0, "Master", "Master", 0, "WalkHit", "Master", 1, "AirborneHit", "Master", 2, "IdleHit", "JumpHitSeek", 0, "JumpHitAnim", "IdleHit", 0, "Idle", "IdleHit", 1, "IdleHitSeek", "WalkHit", 0, "Animation", "WalkHit", 1, "WalkHitSeek", "IdleHitSeek", 0, "IdleHitAnim", "WalkHitSeek", 0, "WalkHitAnim", "JumpSeek", 0, "Animation 3", "AirborneHit", 0, "FallJump", "AirborneHit", 1, "JumpHitSeek", "FallJump", 0, "JumpSeek", "FallJump", 1, "Animation 2" ]
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -867,26 +881,26 @@ scale = Vector2( 0.5, 0.5 )
 
 [node name="UpperArm2" type="Sprite" parent="Body"]
 position = Vector2( 33.2503, -43.218 )
-rotation = 1.20597
+rotation = -0.448994
 texture = ExtResource( 5 )
 offset = Vector2( 11.3853, 40.069 )
 
 [node name="LowerArm" type="Sprite" parent="Body/UpperArm2"]
-position = Vector2( 10.0927, 75.0977 )
-rotation = 2.81306
+position = Vector2( 12.444, 74.7441 )
+rotation = 2.45319
+scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 offset = Vector2( -25.6847, -21.5091 )
 
 [node name="Sword" type="Sprite" parent="Body/UpperArm2/LowerArm"]
-position = Vector2( -32.7762, -57.4805 )
-rotation = -3.03275
-scale = Vector2( 1, 1 )
+position = Vector2( -35.9223, -57.3718 )
+rotation = -2.80016
 texture = ExtResource( 7 )
 offset = Vector2( 30.1201, -64.463 )
 
 [node name="UpperLeg2" type="Sprite" parent="Body"]
 position = Vector2( 25.6119, 37.1753 )
-rotation = -1.25865
+rotation = 0.049999
 texture = ExtResource( 3 )
 offset = Vector2( -2.3811, 24.6047 )
 __meta__ = {
@@ -895,7 +909,7 @@ __meta__ = {
 
 [node name="LowerLeg" type="Sprite" parent="Body/UpperLeg2"]
 position = Vector2( -12.3144, 50.9192 )
-rotation = 0.768729
+rotation = 0.189733
 texture = ExtResource( 4 )
 offset = Vector2( -6.34961, 12.6992 )
 __meta__ = {
@@ -913,7 +927,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Torso"]
 position = Vector2( 22.76, 68.6311 )
-rotation = -1.21169
+rotation = 0.0969572
 remote_path = NodePath("../../UpperLeg2")
 __meta__ = {
 "_edit_bone_": true,
@@ -922,7 +936,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D3" type="RemoteTransform2D" parent="Body/Torso/RemoteTransform2D"]
 position = Vector2( -12.3144, 50.9192 )
-rotation = 0.768729
+rotation = 0.189733
 remote_path = NodePath("../../../UpperLeg2/LowerLeg")
 __meta__ = {
 "_edit_bone_": true,
@@ -938,7 +952,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Body/Torso"]
 position = Vector2( 34.1637, -11.315 )
-rotation = 1.25293
+rotation = -0.402036
 remote_path = NodePath("../../UpperArm2")
 __meta__ = {
 "_edit_bone_": true,
@@ -947,7 +961,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Torso/RemoteTransform2D2"]
 position = Vector2( 15.7646, 74.1148 )
-rotation = -3.54612
+rotation = -3.8746
 remote_path = NodePath("../../../UpperArm2/LowerArm")
 __meta__ = {
 "_edit_bone_": true,
@@ -956,7 +970,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Body/Torso/RemoteTransform2D2/RemoteTransform2D"]
 position = Vector2( -37.0801, -56.6304 )
-rotation = -3.06972
+rotation = -2.82047
 remote_path = NodePath("../../../../UpperArm2/LowerArm/Sword")
 __meta__ = {
 "_edit_bone_": true,
@@ -973,7 +987,7 @@ __meta__ = {
 
 [node name="UpperLeg" type="Sprite" parent="Body/Torso"]
 position = Vector2( -19.2327, 73.2299 )
-rotation = -2.41457
+rotation = -3.65869
 scale = Vector2( 1, -1 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, 20.6362 )
@@ -984,7 +998,7 @@ __meta__ = {
 
 [node name="LowerLeg" type="Sprite" parent="Body/Torso/UpperLeg"]
 position = Vector2( -7.17938, 49.8002 )
-rotation = -1.16583
+rotation = -1.17279
 texture = ExtResource( 4 )
 offset = Vector2( -9.59338, 15.3098 )
 __meta__ = {
@@ -1001,7 +1015,7 @@ __meta__ = {
 
 [node name="UpperArm" type="Sprite" parent="Body/Torso"]
 position = Vector2( -17.1867, -15.0498 )
-rotation = 0.143329
+rotation = 1.25091
 texture = ExtResource( 5 )
 offset = Vector2( 4.83343, 37.3286 )
 __meta__ = {
@@ -1011,7 +1025,7 @@ __meta__ = {
 
 [node name="LowerArm" type="Sprite" parent="Body/Torso/UpperArm"]
 position = Vector2( 12.9281, 73.256 )
-rotation = -3.74988
+rotation = -3.585
 texture = ExtResource( 2 )
 offset = Vector2( -23.4522, -16.3995 )
 __meta__ = {
@@ -1037,7 +1051,7 @@ __meta__ = {
 
 [node name="Head" type="Sprite" parent="Body/Torso"]
 position = Vector2( 2.1225, -43.3555 )
-rotation = 0.245686
+rotation = 0.0361212
 texture = ExtResource( 8 )
 __meta__ = {
 "_edit_bone_": true
@@ -1068,12 +1082,18 @@ anims/Walk = SubResource( 8 )
 tree_root = SubResource( 22 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
+parameters/AirborneHit/add_amount = 0.0
+parameters/FallJump/add_amount = 0
 parameters/IdleHit/add_amount = 0.0
 parameters/IdleHitSeek/seek_position = -1.0
-parameters/JumpHit/add_amount = 0.0
 parameters/JumpHitSeek/seek_position = -1.0
+parameters/JumpSeek/seek_position = -1.0
 parameters/Master/blend_amount = -1.0
 parameters/WalkHit/add_amount = 0.0
 parameters/WalkHitSeek/seek_position = -1.0
+
+[node name="FloorDetector" type="RayCast2D" parent="."]
+position = Vector2( 0, 32.5269 )
+enabled = true
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_AttackCooldownTimer_timeout"]
 [connection signal="timeout" from="AttackAnimTimer" to="." method="_on_AttackAnimTimer_timeout"]
