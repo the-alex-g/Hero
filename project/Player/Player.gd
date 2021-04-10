@@ -6,7 +6,7 @@ extends KinematicBody2D
 const UP_VECTOR := Vector2.UP
 
 # enums
-enum State {WALKING, IDLE, ATTACKING}
+enum State {WALKING, IDLE}
 
 # exported variables
 export var speed := 200
@@ -27,15 +27,18 @@ var _time_off_ground := 0.0
 var _can_jump := true
 var _can_attack := true
 var _smash_attack := false
+var _attacking := false
 
 # onready variables
 onready var collision := $CollisionShape2D
 onready var _attack_cooldown_timer := $AttackCooldownTimer
 onready var _animations := $AnimationPlayer
+onready var _animation_tree := $AnimationTree
 onready var _body := $Body
 
 
 func _ready()->void:
+	_animation_tree.active = false
 	_action_key += _player_index + "_"
 
 
@@ -80,15 +83,27 @@ func _process(delta:float)->void:
 	_get_animation()
 
 
-func _get_animation():
+func _get_animation()->void:
 	if _state == State.WALKING:
+		if _attacking:
+			_animation_tree.active = true
+			_animations.play("Hit")
+			yield(get_tree().create_timer(0.2), "timeout")
+			_animation_tree.active = false
+			_attacking = false
 		_animations.play("Walk")
 	elif _state == State.IDLE:
-		_animations.play("Idle")
+		if _attacking:
+			_animations.play("Hit")
+			yield(get_tree().create_timer(0.2), "timeout")
+			_attacking = false
+		else:
+			_animations.play("Idle")
 
 
 func _attack():
 	_can_attack = false
+	_attacking = true
 	_attack_cooldown_timer.start(attack_cooldown_time)
 
 
