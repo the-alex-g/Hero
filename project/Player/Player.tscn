@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art/armpiecetwo.png" type="Texture" id=2]
@@ -13,6 +13,12 @@
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 30.0
 height = 75.0
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 50.5, 81.5 )
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 289.455, 10 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Hit"
@@ -386,74 +392,79 @@ tracks/11/keys = {
 "values": [ 2.06959, 15.8744, 2.06959, 13.7374 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAdd2" id=16]
-
-[sub_resource type="AnimationNodeAnimation" id=15]
-animation = "Hit"
-
-[sub_resource type="AnimationNodeTimeSeek" id=17]
-
-[sub_resource type="AnimationNodeAnimation" id=13]
-animation = "Walk"
-
-[sub_resource type="AnimationNodeAdd2" id=8]
-
-[sub_resource type="AnimationNodeAnimation" id=6]
-animation = "Hit"
-
-[sub_resource type="AnimationNodeTimeSeek" id=18]
-
-[sub_resource type="AnimationNodeAdd3" id=14]
+[sub_resource type="AnimationNodeAdd2" id=6]
 
 [sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Hit"
+
+[sub_resource type="AnimationNodeTimeSeek" id=8]
+
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Walk"
 
 [sub_resource type="AnimationNodeAdd2" id=10]
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Hit"
+
+[sub_resource type="AnimationNodeTimeSeek" id=12]
+
+[sub_resource type="AnimationNodeAdd3" id=13]
 
 [sub_resource type="AnimationNodeTimeSeek" id=20]
 
-[sub_resource type="AnimationNodeBlendTree" id=11]
-graph_offset = Vector2( 0, 173 )
-nodes/Idle/node = SubResource( 12 )
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Walk"
+
+[sub_resource type="AnimationNodeAdd2" id=15]
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Hit"
+
+[sub_resource type="AnimationNodeTimeSeek" id=17]
+
+[sub_resource type="AnimationNodeBlendTree" id=18]
+graph_offset = Vector2( 0, 196.5 )
+nodes/Idle/node = SubResource( 5 )
 nodes/Idle/position = Vector2( 360, 540 )
-nodes/IdleHit/node = SubResource( 16 )
+nodes/IdleHit/node = SubResource( 6 )
 nodes/IdleHit/position = Vector2( 597, 551 )
-nodes/IdleHitAnim/node = SubResource( 15 )
+nodes/IdleHitAnim/node = SubResource( 7 )
 nodes/IdleHitAnim/position = Vector2( 200, 660 )
-nodes/IdleHitSeek/node = SubResource( 17 )
+nodes/IdleHitSeek/node = SubResource( 8 )
 nodes/IdleHitSeek/position = Vector2( 400, 680 )
-nodes/Jump/node = SubResource( 13 )
+nodes/Jump/node = SubResource( 9 )
 nodes/Jump/position = Vector2( 340, 280 )
-nodes/JumpHit/node = SubResource( 8 )
+nodes/JumpHit/node = SubResource( 10 )
 nodes/JumpHit/position = Vector2( 580, 280 )
-nodes/JumpHitAnim/node = SubResource( 6 )
+nodes/JumpHitAnim/node = SubResource( 11 )
 nodes/JumpHitAnim/position = Vector2( 180, 420 )
-nodes/JumpHitSeek/node = SubResource( 18 )
+nodes/JumpHitSeek/node = SubResource( 12 )
 nodes/JumpHitSeek/position = Vector2( 360, 420 )
-nodes/Master/node = SubResource( 14 )
+nodes/Master/node = SubResource( 13 )
 nodes/Master/position = Vector2( 820, 80 )
-nodes/Walk/node = SubResource( 7 )
+nodes/Seek/node = SubResource( 20 )
+nodes/Seek/position = Vector2( 963, 178.5 )
+nodes/Walk/node = SubResource( 14 )
 nodes/Walk/position = Vector2( 320, 0 )
-nodes/WalkHit/node = SubResource( 10 )
+nodes/WalkHit/node = SubResource( 15 )
 nodes/WalkHit/position = Vector2( 540, 20 )
-nodes/WalkHitAnim/node = SubResource( 5 )
+nodes/WalkHitAnim/node = SubResource( 16 )
 nodes/WalkHitAnim/position = Vector2( 120, 140 )
-nodes/WalkHitSeek/node = SubResource( 20 )
+nodes/WalkHitSeek/node = SubResource( 17 )
 nodes/WalkHitSeek/position = Vector2( 340, 160 )
 nodes/output/position = Vector2( 1120, 260 )
-node_connections = [ "output", 0, "Master", "Master", 0, "WalkHit", "Master", 1, "JumpHit", "Master", 2, "IdleHit", "JumpHit", 0, "Jump", "JumpHit", 1, "JumpHitSeek", "IdleHit", 0, "Idle", "IdleHit", 1, "IdleHitSeek", "WalkHit", 0, "Walk", "WalkHit", 1, "WalkHitSeek", "WalkHitSeek", 0, "WalkHitAnim", "IdleHitSeek", 0, "IdleHitAnim", "JumpHitSeek", 0, "JumpHitAnim" ]
+node_connections = [ "output", 0, "Master", "Master", 0, "WalkHit", "Master", 1, "JumpHit", "Master", 2, "IdleHit", "IdleHitSeek", 0, "IdleHitAnim", "IdleHit", 0, "Idle", "IdleHit", 1, "IdleHitSeek", "JumpHitSeek", 0, "JumpHitAnim", "WalkHitSeek", 0, "WalkHitAnim", "WalkHit", 0, "Walk", "WalkHit", 1, "WalkHitSeek", "JumpHit", 0, "Jump", "JumpHit", 1, "JumpHitSeek" ]
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [ -267.469 ]
 }
+jump_strength = 300
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 11.1362 )
@@ -471,27 +482,28 @@ scale = Vector2( 0.5, 0.5 )
 
 [node name="UpperArm2" type="Sprite" parent="Body"]
 position = Vector2( 33.2503, -43.218 )
-rotation = -0.548695
+rotation = 1.28257
 scale = Vector2( 1, 1 )
 texture = ExtResource( 5 )
 offset = Vector2( 11.3853, 40.069 )
 
 [node name="LowerArm" type="Sprite" parent="Body/UpperArm2"]
-position = Vector2( 9.87421, 75.1267 )
-rotation = -2.62416
+position = Vector2( 10.0099, 75.1088 )
+rotation = 2.82167
+scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 offset = Vector2( -25.6847, -21.5091 )
 
 [node name="Sword" type="Sprite" parent="Body/UpperArm2/LowerArm"]
-position = Vector2( -14.2511, -68.9841 )
-rotation = -1.64264
+position = Vector2( -36.5064, -56.9331 )
+rotation = -3.0917
 scale = Vector2( 1, 1 )
 texture = ExtResource( 7 )
 offset = Vector2( 30.1201, -64.463 )
 
 [node name="UpperLeg2" type="Sprite" parent="Body"]
 position = Vector2( 25.6119, 37.1753 )
-rotation = -0.316163
+rotation = -1.3085
 texture = ExtResource( 3 )
 offset = Vector2( -2.3811, 24.6047 )
 __meta__ = {
@@ -500,7 +512,7 @@ __meta__ = {
 
 [node name="LowerLeg" type="Sprite" parent="Body/UpperLeg2"]
 position = Vector2( -12.3144, 50.9192 )
-rotation = 0.019633
+rotation = 0.821999
 texture = ExtResource( 4 )
 offset = Vector2( -6.34961, 12.6992 )
 __meta__ = {
@@ -518,7 +530,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Torso"]
 position = Vector2( 22.76, 68.6311 )
-rotation = -0.269205
+rotation = -1.26154
 remote_path = NodePath("../../UpperLeg2")
 __meta__ = {
 "_edit_bone_": true,
@@ -527,7 +539,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D3" type="RemoteTransform2D" parent="Body/Torso/RemoteTransform2D"]
 position = Vector2( -12.3144, 50.9192 )
-rotation = 0.019633
+rotation = 0.821999
 remote_path = NodePath("../../../UpperLeg2/LowerLeg")
 __meta__ = {
 "_edit_bone_": true,
@@ -543,7 +555,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Body/Torso"]
 position = Vector2( 34.1637, -11.315 )
-rotation = -0.501737
+rotation = 1.32953
 remote_path = NodePath("../../UpperArm2")
 __meta__ = {
 "_edit_bone_": true,
@@ -552,7 +564,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Torso/RemoteTransform2D2"]
 position = Vector2( 15.7646, 74.1148 )
-rotation = -2.70306
+rotation = -3.53861
 remote_path = NodePath("../../../UpperArm2/LowerArm")
 __meta__ = {
 "_edit_bone_": true,
@@ -561,7 +573,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Body/Torso/RemoteTransform2D2/RemoteTransform2D"]
 position = Vector2( -37.0801, -56.6304 )
-rotation = -1.85012
+rotation = -3.10036
 remote_path = NodePath("../../../../UpperArm2/LowerArm/Sword")
 __meta__ = {
 "_edit_bone_": true,
@@ -578,7 +590,7 @@ __meta__ = {
 
 [node name="UpperLeg" type="Sprite" parent="Body/Torso"]
 position = Vector2( -19.2327, 73.2299 )
-rotation = -3.23599
+rotation = -2.3742
 scale = Vector2( 1, -1 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, 20.6362 )
@@ -589,7 +601,7 @@ __meta__ = {
 
 [node name="LowerLeg" type="Sprite" parent="Body/Torso/UpperLeg"]
 position = Vector2( -7.17938, 49.8002 )
-rotation = -0.82281
+rotation = -1.19828
 texture = ExtResource( 4 )
 offset = Vector2( -9.59338, 15.3098 )
 __meta__ = {
@@ -606,7 +618,7 @@ __meta__ = {
 
 [node name="UpperArm" type="Sprite" parent="Body/Torso"]
 position = Vector2( -17.1867, -15.0498 )
-rotation = 1.00493
+rotation = 0.0951338
 texture = ExtResource( 5 )
 offset = Vector2( 4.83343, 37.3286 )
 __meta__ = {
@@ -616,7 +628,7 @@ __meta__ = {
 
 [node name="LowerArm" type="Sprite" parent="Body/Torso/UpperArm"]
 position = Vector2( 12.9281, 73.256 )
-rotation = -3.24079
+rotation = -3.79285
 texture = ExtResource( 2 )
 offset = Vector2( -23.4522, -16.3995 )
 __meta__ = {
@@ -642,11 +654,25 @@ __meta__ = {
 
 [node name="Head" type="Sprite" parent="Body/Torso"]
 position = Vector2( 2.1225, -43.3555 )
-rotation = 0.0361212
+rotation = 0.25918
 texture = ExtResource( 8 )
 __meta__ = {
 "_edit_bone_": true
 }
+
+[node name="HitArea" type="Area2D" parent="Body"]
+position = Vector2( 4.45452, -16.0361 )
+scale = Vector2( 2, 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/HitArea"]
+position = Vector2( 89, -3.5 )
+shape = SubResource( 19 )
+
+[node name="SmashArea" type="Area2D" parent="Body"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/SmashArea"]
+position = Vector2( 4, 129 )
+shape = SubResource( 21 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Hit = SubResource( 2 )
@@ -654,15 +680,16 @@ anims/Idle = SubResource( 3 )
 anims/Walk = SubResource( 4 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 11 )
+tree_root = SubResource( 18 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/IdleHit/add_amount = 0
 parameters/IdleHitSeek/seek_position = -1.0
-parameters/JumpHit/add_amount = 1.0
+parameters/JumpHit/add_amount = 0.0
 parameters/JumpHitSeek/seek_position = -1.0
-parameters/Master/add_amount = 0.0
-parameters/WalkHit/add_amount = 1.0
+parameters/Master/add_amount = -1.0
+parameters/Seek/seek_position = 1.0
+parameters/WalkHit/add_amount = 0.0
 parameters/WalkHitSeek/seek_position = -1.0
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_AttackCooldownTimer_timeout"]
 [connection signal="timeout" from="AttackAnimTimer" to="." method="_on_AttackAnimTimer_timeout"]

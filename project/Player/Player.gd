@@ -1,3 +1,4 @@
+class_name Hero
 extends KinematicBody2D
 
 # signals
@@ -28,13 +29,14 @@ var _can_attack := true
 var _smash_attack := false
 var _attacking := false
 var _was_attacking := false
+var _damage := 1.0
 
 # onready variables
 onready var collision := $CollisionShape2D
 onready var _attack_cooldown_timer := $AttackCooldownTimer
-onready var _animations := $AnimationPlayer
 onready var _animation_tree := $AnimationTree
-onready var _body := $Body
+onready var _sword_hit_area := $Body/HitArea
+onready var _smash_area := $Body/SmashArea
 
 
 func _ready()->void:
@@ -42,19 +44,26 @@ func _ready()->void:
 	_action_key += _player_index + "_"
 
 
-func _process(delta:float)->void:
+func _physics_process(delta:float)->void:
 	var velocity := Vector2.ZERO
 	var y_force := 0.0
+	
 	if Input.is_action_pressed(_action_key+"left"):
 		velocity.x -= 1
+	
 	if Input.is_action_pressed(_action_key+"right"):
 		velocity.x += 1
+	
 	if Input.is_action_just_pressed(_action_key+"jump") and _can_jump:
 		_jumping = true
 		_can_jump = false
 		_time_off_ground = 0.0
+	
 	if Input.is_action_just_pressed(_action_key+"attack") and _can_attack:
 		_attack()
+	
+	if Input.is_action_just_pressed(_action_key+"smash_attack") and _can_attack:
+		_smash_attack()
 	
 	if not is_on_floor():
 		_gravity_effect = _calculate_gravity(delta)
@@ -74,15 +83,33 @@ func _process(delta:float)->void:
 	velocity.y += y_force
 	
 	if velocity.x != 0:
-		_body.scale.x = 0.5 if velocity.x > 0 else -0.5
+		$Body.scale.x = 0.5 if velocity.x > 0 else -0.5
 		_state = State.WALKING
 		velocity.x *= speed
 	elif velocity.x == 0:
 		_state = State.IDLE
 	if not is_on_floor():
 		_state = State.AIRBORNE
+	if is_on_floor() and _smash_attack:
+		_execute_smash()
 	_ignore = move_and_slide(velocity, UP_VECTOR)
 	_get_animation()
+
+
+func _execute_smash()->void:
+	for body in _smash_area.get_overlapping_bodies():
+		if body is Enemy:
+			body.hit(_damage)
+			body.throw_back(get_global_transform().origin)
+	_can_attack = true
+	_smash_attack = false
+
+
+func _smash_attack()->void:
+	_can_attack = false
+	_smash_attack = true
+	_jumping = false
+	_time_off_ground = 1.0
 
 
 func _get_animation()->void:
@@ -124,6 +151,9 @@ func _set_animation(idle:float, jump:float, walk:float, master_value:float)->voi
 func _attack():
 	_can_attack = false
 	_attacking = true
+	for body in _sword_hit_area.get_overlapping_bodies():
+		if body is Enemy:
+			body.hit(_damage)
 	_attack_cooldown_timer.start(attack_cooldown_time)
 	$AttackAnimTimer.start(0.2)
 
