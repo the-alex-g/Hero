@@ -88,8 +88,8 @@ func _physics_process(delta:float)->void:
 		velocity.x *= speed
 	elif velocity.x == 0:
 		_state = State.IDLE
-	if not is_on_floor():
-		_state = State.AIRBORNE
+#	if not is_on_floor():
+#		_state = State.AIRBORNE
 	if is_on_floor() and _smash_attack:
 		_execute_smash()
 	_ignore = move_and_slide(velocity, UP_VECTOR)
@@ -145,7 +145,7 @@ func _set_animation(idle:float, jump:float, walk:float, master_value:float)->voi
 	_animation_tree.set("parameters/WalkHit/add_amount", walk)
 	_animation_tree.set("parameters/JumpHit/add_amount", jump)
 	_animation_tree.set("parameters/IdleHit/add_amount", idle)
-	_animation_tree.set("parameters/Master/add_amount", master_value)
+	_animation_tree.set("parameters/Master/blend_amount", master_value)
 
 
 func _attack():
