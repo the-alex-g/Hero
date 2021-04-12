@@ -5,6 +5,7 @@ extends KinematicBody2D
 
 # constants
 const UP_VECTOR := Vector2.UP
+const MAX_GRAVITY := 400.0
 
 # enums
 enum State {WALKING, IDLE, AIRBORNE, DASHING}
@@ -12,11 +13,11 @@ enum State {WALKING, IDLE, AIRBORNE, DASHING}
 # exported variables
 export var speed := 200
 export var jump_time := 2.0
-export var max_gravity := 400
 export var jump_strength := 200
 export var attack_cooldown_time := 0.5
-export var dash_speed := 300
-export var dash_time := 1.0
+export var dash_speed := 400
+export var dash_time := 0.6
+export var slam_fall_speed := 600.0
 
 # normal variables
 var _ignore
@@ -86,7 +87,8 @@ func _physics_process(delta:float)->void:
 			return
 		
 		if not _is_on_floor():
-			_gravity_effect = _calculate_gravity(delta)
+			var gravity_scale := MAX_GRAVITY if not _smash_attack else slam_fall_speed
+			_gravity_effect = _calculate_gravity(delta, gravity_scale)
 			y_force += _gravity_effect
 		else:
 			if _time_off_ground != 0.0:
@@ -221,10 +223,10 @@ func _attack()->void:
 	$AttackAnimTimer.start(0.2)
 
 
-func _calculate_gravity(delta:float)->float:
+func _calculate_gravity(delta:float, gravity_scale)->float:
 	if _time_off_ground < 1:
 		_time_off_ground += delta
-	return lerp(0.0, max_gravity, _time_off_ground)
+	return lerp(0.0, gravity_scale, _time_off_ground)
 
 
 func _on_AttackCooldownTimer_timeout()->void:
