@@ -74,9 +74,9 @@ func _physics_process(delta:float)->void:
 			_attack()
 		
 		if Input.is_action_just_pressed(_action_key+"smash_attack") and _can_attack:
-			_smash_attack()
+			_prepare_smash_attack()
 		
-		if Input.is_action_just_pressed(_action_key+"dash") and _can_dash:
+		if Input.is_action_just_pressed(_action_key+"dash") and _can_dash and _can_attack:
 			$DashCooldownTimer.start(dash_time)
 			_can_dash = false
 			_state = State.DASHING
@@ -134,7 +134,7 @@ func _execute_smash()->void:
 	_smash_attack = false
 
 
-func _smash_attack()->void:
+func _prepare_smash_attack()->void:
 	_can_attack = false
 	_smash_attack = true
 	_jumping = false
