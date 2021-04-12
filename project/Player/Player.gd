@@ -35,6 +35,8 @@ var _was_jumping := false
 var _can_dash := true
 var _damage := 1.0
 var _dashing_left := false
+var _was_dashing := false
+var _was_smashing := false
 
 # onready variables
 onready var collision := $CollisionShape2D
@@ -126,6 +128,7 @@ func _execute_smash()->void:
 			body.hit(_damage)
 			body.throw_back(get_global_transform().origin)
 	_can_attack = true
+	_was_smashing = false
 	_smash_attack = false
 
 
@@ -141,6 +144,7 @@ func _get_animation()->void:
 	var walk_hit := 0.0
 	var jump_hit := 0.0
 	var idle_hit := 0.0
+	var dash_value := 0.0
 	
 	# values from 0 (jumping) to 1 (falling)
 	var jump := 0.0
@@ -149,6 +153,7 @@ func _get_animation()->void:
 	var master_action := 0.0
 	
 	if _state == State.WALKING:
+		dash_value = 0.0
 		master_action = -1.0
 	
 	elif _state == State.IDLE:
@@ -157,21 +162,27 @@ func _get_animation()->void:
 	elif _state == State.AIRBORNE:
 		master_action = 0.0
 	
-	_set_animation(idle_hit, jump_hit, walk_hit, jump, master_action)
+	elif _state == State.DASHING:
+		dash_value = 1.0
+		master_action = -1.0
+	
+	_set_animation(idle_hit, jump_hit, walk_hit, jump, dash_value, master_action)
 
 
-func _set_animation(idle:float, jump:float, walk:float, jump_or_fall:float,  master_value:float)->void:
+func _set_animation(idle:float, jump:float, walk:float, jump_or_fall:float, dash_value:float, master_value:float)->void:
 	# master is -1: walk, 0: jump, 1: idle
-	# the others are 0: base, 1: hit
+	var air_attack := 0.0
 	if _attacking:
 		idle = 1.0
 		jump = 1.0
 		walk = 1.0
+		air_attack = 0.0
 		if not _was_attacking:
 			_animation_tree.set("parameters/IdleHitSeek/seek_position", 0)
 			_animation_tree.set("parameters/JumpHitSeek/seek_position", 0)
 			_animation_tree.set("parameters/WalkHitSeek/seek_position", 0)
 			_was_attacking = true
+	
 	if _jumping:
 		jump_or_fall = 0.0
 		if not _was_jumping:
@@ -179,9 +190,23 @@ func _set_animation(idle:float, jump:float, walk:float, jump_or_fall:float,  mas
 			_was_jumping = true
 	else:
 		jump_or_fall = 1.0
+	
+	if dash_value == 1.0 and not _was_dashing:
+		_animation_tree.set("parameters/DashSeek/seek_position", 0)
+		_was_dashing = true
+	
+	if _smash_attack:
+		jump = 1.0
+		air_attack = 1.0
+		if not _was_smashing:
+			_animation_tree.set("parameters/SlamSeek/seek_position", 0)
+			_was_smashing = true
+	
 	_animation_tree.set("parameters/FallJump/add_amount", jump_or_fall)
 	_animation_tree.set("parameters/WalkHit/add_amount", walk)
-	_animation_tree.set("parameters/AirborneHit/add_amount", jump)
+	_animation_tree.set("parameters/WalkDash/add_amount", dash_value)
+	_animation_tree.set("parameters/Airborne/blend_amount", jump)
+	_animation_tree.set("parameters/JumpHit/blend_amount", air_attack)
 	_animation_tree.set("parameters/IdleHit/add_amount", idle)
 	_animation_tree.set("parameters/Master/blend_amount", master_value)
 
@@ -227,4 +252,5 @@ func _is_on_floor()->bool:
 
 func _on_DashCooldownTimer_timeout()->void:
 	_can_dash = true
+	_was_dashing = false
 	_state = State.IDLE
