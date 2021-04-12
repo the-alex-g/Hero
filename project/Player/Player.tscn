@@ -10,9 +10,8 @@
 [ext_resource path="res://Art/sideviewofhead.png" type="Texture" id=8]
 [ext_resource path="res://Art/torso.png" type="Texture" id=9]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 30.0
-height = 75.0
+[sub_resource type="RectangleShape2D" id=34]
+extents = Vector2( 31, 65.6362 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 50.5, 81.5 )
@@ -746,6 +745,8 @@ tracks/15/keys = {
 
 [sub_resource type="Animation" id=9]
 resource_name = "Slam"
+length = 0.4
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Torso/UpperLeg/LowerLeg:rotation_degrees")
 tracks/0/interp = 1
@@ -753,10 +754,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -37.9232, -120.863, -120.863, -120.863 ]
+"values": [ -37.9232, -120.863, -120.863 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Torso/UpperArm/LowerArm/Shield:rotation_degrees")
@@ -765,10 +766,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 197.101, 197.101, 197.101, 197.101 ]
+"values": [ 197.101, 197.101, 197.101 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Torso/RemoteTransform2D/RemoteTransform2D3:rotation_degrees")
@@ -777,10 +778,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -3.35646, 49.5514, 49.5514, 49.5514 ]
+"values": [ -3.35646, 49.5514, 49.5514 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Torso/RemoteTransform2D2/RemoteTransform2D/RemoteTransform2D2:rotation_degrees")
@@ -789,7 +790,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2, 0.25 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -148.618, 47.3043, 16.4527, -55.6372 ]
@@ -801,7 +802,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2, 0.25 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -209.86, -244.477, -199.462, -136.947 ]
@@ -813,10 +814,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -31.9408, -68.0578, -13.504, -13.504 ]
+"values": [ -31.9408, -68.0578, -13.504 ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Body/Torso/RemoteTransform2D:rotation_degrees")
@@ -825,10 +826,10 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -41.0939, -33.9074, -33.9074, -33.9074 ]
+"values": [ -41.0939, -33.9074, -33.9074 ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Body/Torso:rotation_degrees")
@@ -837,10 +838,10 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -2.69051, -2.69051, -2.69051, -2.69051 ]
+"values": [ -2.69051, -2.69051, -2.69051 ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Body/Torso/UpperLeg:rotation_degrees")
@@ -849,10 +850,10 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -157.164, -157.164, -157.164, -157.164 ]
+"values": [ -157.164, -157.164, -157.164 ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("Body/Torso/UpperArm:rotation_degrees")
@@ -861,7 +862,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2, 0.25 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 78.4503, 78.4503, 78.4503, 65.6074 ]
@@ -873,7 +874,7 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2, 0.25 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -176.615, -176.615, -224.547, -236.852 ]
@@ -885,10 +886,10 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 2.06959, 24.4222, 24.4222, 24.4222 ]
+"values": [ 2.06959, 24.4222, 24.4222 ]
 }
 tracks/12/type = "value"
 tracks/12/path = NodePath("Body/Torso/UpperArm/LowerArm/Shield/Position2D:rotation_degrees")
@@ -897,10 +898,10 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 0.0, 0.0 ]
 }
 tracks/13/type = "value"
 tracks/13/path = NodePath("Body/Torso/UpperLeg/LowerLeg/Position2D:rotation_degrees")
@@ -909,10 +910,10 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 0.0, 0.0 ]
 }
 tracks/14/type = "value"
 tracks/14/path = NodePath("Body/Torso/RemoteTransform2D/RemoteTransform2D3/Position2D:rotation_degrees")
@@ -921,10 +922,10 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 0.0, 0.0 ]
+"values": [ 0.0, 0.0, 0.0 ]
 }
 tracks/15/type = "value"
 tracks/15/path = NodePath("Body/Torso/RemoteTransform2D2/RemoteTransform2D/RemoteTransform2D2/Position2D:rotation_degrees")
@@ -933,10 +934,10 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -28.0721, -28.0721, -28.0721, -28.0721 ]
+"values": [ -28.0721, -28.0721, -28.0721 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -1187,18 +1188,18 @@ nodes/WalkHitAnim/position = Vector2( 220, -80 )
 nodes/WalkHitSeek/node = SubResource( 32 )
 nodes/WalkHitSeek/position = Vector2( 420, -80 )
 nodes/output/position = Vector2( 1340, 20 )
-node_connections = [ "output", 0, "Master", "Master", 0, "WalkDash", "Master", 1, "Airborne", "Master", 2, "IdleHit", "JumpHit", 0, "JumpHitSeek", "JumpHit", 1, "SlamSeek", "IdleHit", 0, "Idle", "IdleHit", 1, "IdleHitSeek", "JumpHitSeek", 0, "JumpHitAnim", "Airborne", 0, "FallJump", "Airborne", 1, "JumpHit", "DashSeek", 0, "WalkDashAnim", "FallJump", 0, "JumpSeek", "FallJump", 1, "Animation 2", "JumpSeek", 0, "Animation 3", "IdleHitSeek", 0, "IdleHitAnim", "WalkDash", 0, "WalkHit", "WalkDash", 1, "DashSeek", "WalkHit", 0, "Animation", "WalkHit", 1, "WalkHitSeek", "SlamSeek", 0, "SlamAnim", "WalkHitSeek", 0, "WalkHitAnim" ]
+node_connections = [ "output", 0, "Master", "Master", 0, "WalkDash", "Master", 1, "Airborne", "Master", 2, "IdleHit", "JumpHit", 0, "JumpHitSeek", "JumpHit", 1, "SlamSeek", "SlamSeek", 0, "SlamAnim", "WalkHit", 0, "Animation", "WalkHit", 1, "WalkHitSeek", "DashSeek", 0, "WalkDashAnim", "IdleHit", 0, "Idle", "IdleHit", 1, "IdleHitSeek", "WalkDash", 0, "WalkHit", "WalkDash", 1, "DashSeek", "FallJump", 0, "JumpSeek", "FallJump", 1, "Animation 2", "Airborne", 0, "FallJump", "Airborne", 1, "JumpHit", "IdleHitSeek", 0, "IdleHitAnim", "JumpHitSeek", 0, "JumpHitAnim", "JumpSeek", 0, "Animation 3", "WalkHitSeek", 0, "WalkHitAnim" ]
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [ -267.469 ]
 }
-jump_strength = 300
+jump_strength = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 11.1362 )
-shape = SubResource( 1 )
+shape = SubResource( 34 )
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
 one_shot = true
@@ -1216,27 +1217,26 @@ scale = Vector2( 0.5, 0.5 )
 
 [node name="UpperArm2" type="Sprite" parent="Body"]
 position = Vector2( 33.2503, -43.218 )
-rotation = 1.80309
+rotation = -0.60443
 texture = ExtResource( 5 )
 offset = Vector2( 11.3853, 40.069 )
 
 [node name="LowerArm" type="Sprite" parent="Body/UpperArm2"]
-position = Vector2( 7.93417, 75.3563 )
-rotation = -2.81307
+position = Vector2( 15.7646, 74.1148 )
+rotation = 2.62044
 scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 offset = Vector2( -25.6847, -21.5091 )
 
 [node name="Sword" type="Sprite" parent="Body/UpperArm2/LowerArm"]
-position = Vector2( -30.9599, -60.1948 )
-rotation = -0.705347
-scale = Vector2( 1, 1 )
+position = Vector2( -37.0801, -56.6304 )
+rotation = -2.59387
 texture = ExtResource( 7 )
 offset = Vector2( 30.1201, -64.463 )
 
 [node name="UpperLeg2" type="Sprite" parent="Body"]
 position = Vector2( 25.6119, 37.1753 )
-rotation = -1.12971
+rotation = -0.764182
 scale = Vector2( 1, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( -2.3811, 24.6047 )
@@ -1246,7 +1246,7 @@ __meta__ = {
 
 [node name="LowerLeg" type="Sprite" parent="Body/UpperLeg2"]
 position = Vector2( -12.3144, 50.9192 )
-rotation = 0.630926
+rotation = -0.0585813
 scale = Vector2( 1, 1 )
 texture = ExtResource( 4 )
 offset = Vector2( -6.34961, 12.6992 )
@@ -1265,7 +1265,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Torso"]
 position = Vector2( 22.76, 68.6311 )
-rotation = -1.08275
+rotation = -0.717224
 remote_path = NodePath("../../UpperLeg2")
 __meta__ = {
 "_edit_bone_": true,
@@ -1274,7 +1274,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D3" type="RemoteTransform2D" parent="Body/Torso/RemoteTransform2D"]
 position = Vector2( -12.3144, 50.9192 )
-rotation = 0.630926
+rotation = -0.0585813
 remote_path = NodePath("../../../UpperLeg2/LowerLeg")
 __meta__ = {
 "_edit_bone_": true,
@@ -1290,7 +1290,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Body/Torso"]
 position = Vector2( 34.1637, -11.315 )
-rotation = 1.85005
+rotation = -0.557472
 remote_path = NodePath("../../UpperArm2")
 __meta__ = {
 "_edit_bone_": true,
@@ -1299,7 +1299,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Torso/RemoteTransform2D2"]
 position = Vector2( 15.7646, 74.1148 )
-rotation = -2.91775
+rotation = -3.66275
 remote_path = NodePath("../../../UpperArm2/LowerArm")
 __meta__ = {
 "_edit_bone_": true,
@@ -1308,7 +1308,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Body/Torso/RemoteTransform2D2/RemoteTransform2D"]
 position = Vector2( -37.0801, -56.6304 )
-rotation = -0.810027
+rotation = -2.59387
 remote_path = NodePath("../../../../UpperArm2/LowerArm/Sword")
 __meta__ = {
 "_edit_bone_": true,
@@ -1325,7 +1325,7 @@ __meta__ = {
 
 [node name="UpperLeg" type="Sprite" parent="Body/Torso"]
 position = Vector2( -19.2327, 73.2299 )
-rotation = -2.51902
+rotation = -2.74303
 scale = Vector2( 1, -1 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, 20.6362 )
@@ -1336,7 +1336,7 @@ __meta__ = {
 
 [node name="LowerLeg" type="Sprite" parent="Body/Torso/UpperLeg"]
 position = Vector2( -7.17938, 49.8002 )
-rotation = -1.08189
+rotation = -0.661885
 texture = ExtResource( 4 )
 offset = Vector2( -9.59338, 15.3098 )
 __meta__ = {
@@ -1353,7 +1353,7 @@ __meta__ = {
 
 [node name="UpperArm" type="Sprite" parent="Body/Torso"]
 position = Vector2( -17.1867, -15.0498 )
-rotation = -0.708265
+rotation = 1.36922
 texture = ExtResource( 5 )
 offset = Vector2( 4.83343, 37.3286 )
 __meta__ = {
@@ -1363,7 +1363,7 @@ __meta__ = {
 
 [node name="LowerArm" type="Sprite" parent="Body/Torso/UpperArm"]
 position = Vector2( 12.9281, 73.256 )
-rotation = -3.12674
+rotation = -3.08251
 texture = ExtResource( 2 )
 offset = Vector2( -23.4522, -16.3995 )
 __meta__ = {
@@ -1373,7 +1373,7 @@ __meta__ = {
 
 [node name="Shield" type="Sprite" parent="Body/Torso/UpperArm/LowerArm"]
 position = Vector2( -52.4921, -41.8638 )
-rotation = 3.71855
+rotation = 3.44006
 scale = Vector2( -1, 1 )
 texture = ExtResource( 6 )
 __meta__ = {
@@ -1389,7 +1389,7 @@ __meta__ = {
 
 [node name="Head" type="Sprite" parent="Body/Torso"]
 position = Vector2( 2.1225, -43.3555 )
-rotation = 0.455187
+rotation = 0.0361212
 texture = ExtResource( 8 )
 __meta__ = {
 "_edit_bone_": true
@@ -1429,7 +1429,7 @@ parameters/IdleHitSeek/seek_position = -1.0
 parameters/JumpHit/add_amount = 1.0
 parameters/JumpHitSeek/seek_position = -1.0
 parameters/JumpSeek/seek_position = -1.0
-parameters/Master/blend_amount = -1.0
+parameters/Master/blend_amount = 0.0
 parameters/SlamSeek/seek_position = -1.0
 parameters/WalkDash/add_amount = 1.0
 parameters/WalkHit/add_amount = 0.0
