@@ -782,81 +782,81 @@ tracks/11/keys = {
 "values": [ 2.06959, 15.8744, 2.06959, 13.7374 ]
 }
 
-[sub_resource type="AnimationNodeAdd2" id=15]
-
-[sub_resource type="AnimationNodeAnimation" id=23]
-animation = "Fall"
-
-[sub_resource type="AnimationNodeAnimation" id=9]
-animation = "Jump"
+[sub_resource type="AnimationNodeAdd2" id=9]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
-animation = "Walk"
-
-[sub_resource type="AnimationNodeAdd2" id=24]
+animation = "Fall"
 
 [sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Jump"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "Walk"
+
+[sub_resource type="AnimationNodeAdd2" id=13]
+
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAdd2" id=12]
-
-[sub_resource type="AnimationNodeAnimation" id=13]
-animation = "Hit"
-
-[sub_resource type="AnimationNodeTimeSeek" id=14]
+[sub_resource type="AnimationNodeAdd2" id=15]
 
 [sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Hit"
 
 [sub_resource type="AnimationNodeTimeSeek" id=17]
 
-[sub_resource type="AnimationNodeTimeSeek" id=25]
-
-[sub_resource type="AnimationNodeBlend3" id=18]
-
-[sub_resource type="AnimationNodeAdd2" id=19]
-
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "Hit"
 
-[sub_resource type="AnimationNodeTimeSeek" id=21]
+[sub_resource type="AnimationNodeTimeSeek" id=19]
 
-[sub_resource type="AnimationNodeBlendTree" id=22]
+[sub_resource type="AnimationNodeTimeSeek" id=20]
+
+[sub_resource type="AnimationNodeBlend3" id=21]
+
+[sub_resource type="AnimationNodeAdd2" id=22]
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "Hit"
+
+[sub_resource type="AnimationNodeTimeSeek" id=24]
+
+[sub_resource type="AnimationNodeBlendTree" id=25]
 graph_offset = Vector2( 0, 57.75 )
-nodes/AirborneHit/node = SubResource( 15 )
+nodes/AirborneHit/node = SubResource( 9 )
 nodes/AirborneHit/position = Vector2( 520, 280 )
-nodes/Animation/node = SubResource( 10 )
+nodes/Animation/node = SubResource( 12 )
 nodes/Animation/position = Vector2( 400, -120 )
-"nodes/Animation 2/node" = SubResource( 23 )
+"nodes/Animation 2/node" = SubResource( 10 )
 "nodes/Animation 2/position" = Vector2( 100, 300 )
-"nodes/Animation 3/node" = SubResource( 9 )
+"nodes/Animation 3/node" = SubResource( 11 )
 "nodes/Animation 3/position" = Vector2( 0, 140 )
-nodes/FallJump/node = SubResource( 24 )
+nodes/FallJump/node = SubResource( 13 )
 nodes/FallJump/position = Vector2( 360, 220 )
-nodes/Idle/node = SubResource( 11 )
+nodes/Idle/node = SubResource( 14 )
 nodes/Idle/position = Vector2( 360, 540 )
-nodes/IdleHit/node = SubResource( 12 )
+nodes/IdleHit/node = SubResource( 15 )
 nodes/IdleHit/position = Vector2( 597, 551 )
-nodes/IdleHitAnim/node = SubResource( 13 )
+nodes/IdleHitAnim/node = SubResource( 16 )
 nodes/IdleHitAnim/position = Vector2( 200, 660 )
-nodes/IdleHitSeek/node = SubResource( 14 )
+nodes/IdleHitSeek/node = SubResource( 17 )
 nodes/IdleHitSeek/position = Vector2( 400, 680 )
-nodes/JumpHitAnim/node = SubResource( 16 )
+nodes/JumpHitAnim/node = SubResource( 18 )
 nodes/JumpHitAnim/position = Vector2( 100, 420 )
-nodes/JumpHitSeek/node = SubResource( 17 )
+nodes/JumpHitSeek/node = SubResource( 19 )
 nodes/JumpHitSeek/position = Vector2( 320, 420 )
-nodes/JumpSeek/node = SubResource( 25 )
+nodes/JumpSeek/node = SubResource( 20 )
 nodes/JumpSeek/position = Vector2( 200, 140 )
-nodes/Master/node = SubResource( 18 )
+nodes/Master/node = SubResource( 21 )
 nodes/Master/position = Vector2( 867, -11 )
-nodes/WalkHit/node = SubResource( 19 )
+nodes/WalkHit/node = SubResource( 22 )
 nodes/WalkHit/position = Vector2( 580, -100 )
-nodes/WalkHitAnim/node = SubResource( 20 )
+nodes/WalkHitAnim/node = SubResource( 23 )
 nodes/WalkHitAnim/position = Vector2( 180, 0 )
-nodes/WalkHitSeek/node = SubResource( 21 )
+nodes/WalkHitSeek/node = SubResource( 24 )
 nodes/WalkHitSeek/position = Vector2( 400, 0 )
 nodes/output/position = Vector2( 1120, 260 )
-node_connections = [ "output", 0, "Master", "Master", 0, "WalkHit", "Master", 1, "AirborneHit", "Master", 2, "IdleHit", "JumpHitSeek", 0, "JumpHitAnim", "IdleHit", 0, "Idle", "IdleHit", 1, "IdleHitSeek", "WalkHit", 0, "Animation", "WalkHit", 1, "WalkHitSeek", "IdleHitSeek", 0, "IdleHitAnim", "WalkHitSeek", 0, "WalkHitAnim", "JumpSeek", 0, "Animation 3", "AirborneHit", 0, "FallJump", "AirborneHit", 1, "JumpHitSeek", "FallJump", 0, "JumpSeek", "FallJump", 1, "Animation 2" ]
+node_connections = [ "output", 0, "Master", "Master", 0, "WalkHit", "Master", 1, "AirborneHit", "Master", 2, "IdleHit", "JumpHitSeek", 0, "JumpHitAnim", "IdleHit", 0, "Idle", "IdleHit", 1, "IdleHitSeek", "FallJump", 0, "JumpSeek", "FallJump", 1, "Animation 2", "AirborneHit", 0, "FallJump", "AirborneHit", 1, "JumpHitSeek", "JumpSeek", 0, "Animation 3", "WalkHit", 0, "Animation", "WalkHit", 1, "WalkHitSeek", "IdleHitSeek", 0, "IdleHitAnim", "WalkHitSeek", 0, "WalkHitAnim" ]
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -875,32 +875,35 @@ one_shot = true
 [node name="AttackAnimTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="DashCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="Body" type="Node2D" parent="."]
 position = Vector2( -2.22726, 8.01807 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="UpperArm2" type="Sprite" parent="Body"]
 position = Vector2( 33.2503, -43.218 )
-rotation = -0.448994
+rotation = 0.352917
 texture = ExtResource( 5 )
 offset = Vector2( 11.3853, 40.069 )
 
 [node name="LowerArm" type="Sprite" parent="Body/UpperArm2"]
-position = Vector2( 12.444, 74.7441 )
-rotation = 2.45319
-scale = Vector2( 1, 1 )
+position = Vector2( 21.8055, 72.5675 )
+rotation = 2.57112
 texture = ExtResource( 2 )
 offset = Vector2( -25.6847, -21.5091 )
 
 [node name="Sword" type="Sprite" parent="Body/UpperArm2/LowerArm"]
-position = Vector2( -35.9223, -57.3718 )
-rotation = -2.80016
+position = Vector2( -38.3546, -56.2172 )
+rotation = -2.74292
+scale = Vector2( 1, 1 )
 texture = ExtResource( 7 )
 offset = Vector2( 30.1201, -64.463 )
 
 [node name="UpperLeg2" type="Sprite" parent="Body"]
 position = Vector2( 25.6119, 37.1753 )
-rotation = 0.049999
+rotation = -0.703575
 texture = ExtResource( 3 )
 offset = Vector2( -2.3811, 24.6047 )
 __meta__ = {
@@ -909,7 +912,8 @@ __meta__ = {
 
 [node name="LowerLeg" type="Sprite" parent="Body/UpperLeg2"]
 position = Vector2( -12.3144, 50.9192 )
-rotation = 0.189733
+rotation = 0.175514
+scale = Vector2( 1, 1 )
 texture = ExtResource( 4 )
 offset = Vector2( -6.34961, 12.6992 )
 __meta__ = {
@@ -927,7 +931,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Torso"]
 position = Vector2( 22.76, 68.6311 )
-rotation = 0.0969572
+rotation = -0.656617
 remote_path = NodePath("../../UpperLeg2")
 __meta__ = {
 "_edit_bone_": true,
@@ -936,7 +940,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D3" type="RemoteTransform2D" parent="Body/Torso/RemoteTransform2D"]
 position = Vector2( -12.3144, 50.9192 )
-rotation = 0.189733
+rotation = 0.175514
 remote_path = NodePath("../../../UpperLeg2/LowerLeg")
 __meta__ = {
 "_edit_bone_": true,
@@ -952,7 +956,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Body/Torso"]
 position = Vector2( 34.1637, -11.315 )
-rotation = -0.402036
+rotation = 0.399875
 remote_path = NodePath("../../UpperArm2")
 __meta__ = {
 "_edit_bone_": true,
@@ -961,7 +965,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Torso/RemoteTransform2D2"]
 position = Vector2( 15.7646, 74.1148 )
-rotation = -3.8746
+rotation = -3.62975
 remote_path = NodePath("../../../UpperArm2/LowerArm")
 __meta__ = {
 "_edit_bone_": true,
@@ -970,7 +974,7 @@ __meta__ = {
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Body/Torso/RemoteTransform2D2/RemoteTransform2D"]
 position = Vector2( -37.0801, -56.6304 )
-rotation = -2.82047
+rotation = -2.72852
 remote_path = NodePath("../../../../UpperArm2/LowerArm/Sword")
 __meta__ = {
 "_edit_bone_": true,
@@ -987,7 +991,7 @@ __meta__ = {
 
 [node name="UpperLeg" type="Sprite" parent="Body/Torso"]
 position = Vector2( -19.2327, 73.2299 )
-rotation = -3.65869
+rotation = -2.86419
 scale = Vector2( 1, -1 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, 20.6362 )
@@ -998,7 +1002,7 @@ __meta__ = {
 
 [node name="LowerLeg" type="Sprite" parent="Body/Torso/UpperLeg"]
 position = Vector2( -7.17938, 49.8002 )
-rotation = -1.17279
+rotation = -0.80448
 texture = ExtResource( 4 )
 offset = Vector2( -9.59338, 15.3098 )
 __meta__ = {
@@ -1015,7 +1019,7 @@ __meta__ = {
 
 [node name="UpperArm" type="Sprite" parent="Body/Torso"]
 position = Vector2( -17.1867, -15.0498 )
-rotation = 1.25091
+rotation = 0.680033
 texture = ExtResource( 5 )
 offset = Vector2( 4.83343, 37.3286 )
 __meta__ = {
@@ -1025,7 +1029,7 @@ __meta__ = {
 
 [node name="LowerArm" type="Sprite" parent="Body/Torso/UpperArm"]
 position = Vector2( 12.9281, 73.256 )
-rotation = -3.585
+rotation = -3.27135
 texture = ExtResource( 2 )
 offset = Vector2( -23.4522, -16.3995 )
 __meta__ = {
@@ -1051,7 +1055,7 @@ __meta__ = {
 
 [node name="Head" type="Sprite" parent="Body/Torso"]
 position = Vector2( 2.1225, -43.3555 )
-rotation = 0.0361212
+rotation = 0.199215
 texture = ExtResource( 8 )
 __meta__ = {
 "_edit_bone_": true
@@ -1079,7 +1083,7 @@ anims/Jump = SubResource( 7 )
 anims/Walk = SubResource( 8 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 22 )
+tree_root = SubResource( 25 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/AirborneHit/add_amount = 0.0
@@ -1097,3 +1101,4 @@ position = Vector2( 0, 32.5269 )
 enabled = true
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_AttackCooldownTimer_timeout"]
 [connection signal="timeout" from="AttackAnimTimer" to="." method="_on_AttackAnimTimer_timeout"]
+[connection signal="timeout" from="DashCooldownTimer" to="." method="_on_DashCooldownTimer_timeout"]

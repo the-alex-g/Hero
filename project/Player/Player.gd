@@ -7,7 +7,7 @@ extends KinematicBody2D
 const UP_VECTOR := Vector2.UP
 
 # enums
-enum State {WALKING, IDLE, AIRBORNE}
+enum State {WALKING, IDLE, AIRBORNE, DASHING}
 
 # exported variables
 export var speed := 200
@@ -15,6 +15,8 @@ export var jump_time := 2.0
 export var max_gravity := 400
 export var jump_strength := 200
 export var attack_cooldown_time := 0.5
+export var dash_speed := 300
+export var dash_time := 1.0
 
 # normal variables
 var _ignore
@@ -30,7 +32,9 @@ var _smash_attack := false
 var _attacking := false
 var _was_attacking := false
 var _was_jumping := false
+var _can_dash := true
 var _damage := 1.0
+var _dashing_left := false
 
 # onready variables
 onready var collision := $CollisionShape2D
@@ -48,53 +52,70 @@ func _ready()->void:
 
 func _physics_process(delta:float)->void:
 	var velocity := Vector2.ZERO
-	var y_force := 0.0
+	if _state != State.DASHING:
+		var y_force := 0.0
+		
+		if Input.is_action_pressed(_action_key+"left"):
+			velocity.x -= 1
+		
+		if Input.is_action_pressed(_action_key+"right"):
+			velocity.x += 1
+		
+		if Input.is_action_just_pressed(_action_key+"jump") and _can_jump:
+			_jumping = true
+			_was_jumping = false
+			_can_jump = false
+			_time_off_ground = 0.0
+		
+		if Input.is_action_just_pressed(_action_key+"attack") and _can_attack:
+			_attack()
+		
+		if Input.is_action_just_pressed(_action_key+"smash_attack") and _can_attack:
+			_smash_attack()
+		
+		if Input.is_action_just_pressed(_action_key+"dash") and _can_dash:
+			$DashCooldownTimer.start(dash_time)
+			_can_dash = false
+			_state = State.DASHING
+			if $Body.scale.x > 0:
+				_dashing_left = false
+			else:
+				_dashing_left = true
+			return
+		
+		if not _is_on_floor():
+			_gravity_effect = _calculate_gravity(delta)
+			y_force += _gravity_effect
+		else:
+			if _time_off_ground != 0.0:
+				_time_off_ground = 0.0
+				_can_jump = true
+		
+		if _jumping:
+			y_force -= jump_strength
+			if y_force > 0:
+				_jumping = false
+				_time_off_ground = 0.0
+		
+		velocity = velocity.normalized()
+		velocity.y += y_force
+		
+		if velocity.x != 0:
+			$Body.scale.x = 0.5 if velocity.x > 0 else -0.5
+			_state = State.WALKING
+			velocity.x *= speed
+		elif velocity.x == 0:
+			_state = State.IDLE
+		if not _is_on_floor():
+			_state = State.AIRBORNE
+		if _is_on_floor() and _smash_attack:
+			_execute_smash()
 	
-	if Input.is_action_pressed(_action_key+"left"):
-		velocity.x -= 1
-	
-	if Input.is_action_pressed(_action_key+"right"):
-		velocity.x += 1
-	
-	if Input.is_action_just_pressed(_action_key+"jump") and _can_jump:
-		_jumping = true
-		_was_jumping = false
-		_can_jump = false
-		_time_off_ground = 0.0
-	
-	if Input.is_action_just_pressed(_action_key+"attack") and _can_attack:
-		_attack()
-	
-	if Input.is_action_just_pressed(_action_key+"smash_attack") and _can_attack:
-		_smash_attack()
-	
-	if not _is_on_floor():
-		_gravity_effect = _calculate_gravity(delta)
-		y_force += _gravity_effect
 	else:
-		if _time_off_ground != 0.0:
-			_time_off_ground = 0.0
-			_can_jump = true
+		velocity.x += dash_speed
+		velocity.x *= -1.0 if _dashing_left else 1.0
+		velocity.y = 0.0
 	
-	if _jumping:
-		y_force -= jump_strength
-		if y_force > 0:
-			_jumping = false
-			_time_off_ground = 0.0
-	
-	velocity = velocity.normalized()
-	velocity.y += y_force
-	
-	if velocity.x != 0:
-		$Body.scale.x = 0.5 if velocity.x > 0 else -0.5
-		_state = State.WALKING
-		velocity.x *= speed
-	elif velocity.x == 0:
-		_state = State.IDLE
-	if not _is_on_floor():
-		_state = State.AIRBORNE
-	if _is_on_floor() and _smash_attack:
-		_execute_smash()
 	_ignore = move_and_slide(velocity, UP_VECTOR)
 	_get_animation()
 
@@ -165,7 +186,7 @@ func _set_animation(idle:float, jump:float, walk:float, jump_or_fall:float,  mas
 	_animation_tree.set("parameters/Master/blend_amount", master_value)
 
 
-func _attack():
+func _attack()->void:
 	_can_attack = false
 	_attacking = true
 	for body in _sword_hit_area.get_overlapping_bodies():
@@ -202,3 +223,8 @@ func _is_on_floor()->bool:
 	if _floor_detector.is_colliding():
 		is_detecting = true
 	return is_detecting
+
+
+func _on_DashCooldownTimer_timeout()->void:
+	_can_dash = true
+	_state = State.IDLE
