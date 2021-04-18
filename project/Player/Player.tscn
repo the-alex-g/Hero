@@ -10,7 +10,7 @@
 [ext_resource path="res://Art/sideviewofhead.png" type="Texture" id=8]
 [ext_resource path="res://Art/torso.png" type="Texture" id=9]
 
-[sub_resource type="RectangleShape2D" id=34]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31, 65.6362 )
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -1188,7 +1188,7 @@ nodes/WalkHitAnim/position = Vector2( 220, -80 )
 nodes/WalkHitSeek/node = SubResource( 32 )
 nodes/WalkHitSeek/position = Vector2( 420, -80 )
 nodes/output/position = Vector2( 1340, 20 )
-node_connections = [ "output", 0, "Master", "Master", 0, "WalkDash", "Master", 1, "Airborne", "Master", 2, "IdleHit", "JumpHit", 0, "JumpHitSeek", "JumpHit", 1, "SlamSeek", "SlamSeek", 0, "SlamAnim", "WalkHit", 0, "Animation", "WalkHit", 1, "WalkHitSeek", "DashSeek", 0, "WalkDashAnim", "IdleHit", 0, "Idle", "IdleHit", 1, "IdleHitSeek", "WalkDash", 0, "WalkHit", "WalkDash", 1, "DashSeek", "FallJump", 0, "JumpSeek", "FallJump", 1, "Animation 2", "Airborne", 0, "FallJump", "Airborne", 1, "JumpHit", "IdleHitSeek", 0, "IdleHitAnim", "JumpHitSeek", 0, "JumpHitAnim", "JumpSeek", 0, "Animation 3", "WalkHitSeek", 0, "WalkHitAnim" ]
+node_connections = [ "output", 0, "Master", "Master", 0, "WalkDash", "Master", 1, "Airborne", "Master", 2, "IdleHit", "SlamSeek", 0, "SlamAnim", "WalkDash", 0, "WalkHit", "WalkDash", 1, "DashSeek", "IdleHitSeek", 0, "IdleHitAnim", "JumpHit", 0, "JumpHitSeek", "JumpHit", 1, "SlamSeek", "JumpHitSeek", 0, "JumpHitAnim", "JumpSeek", 0, "Animation 3", "WalkHitSeek", 0, "WalkHitAnim", "Airborne", 0, "FallJump", "Airborne", 1, "JumpHit", "WalkHit", 0, "Animation", "WalkHit", 1, "WalkHitSeek", "DashSeek", 0, "WalkDashAnim", "FallJump", 0, "JumpSeek", "FallJump", 1, "Animation 2", "IdleHit", 0, "Idle", "IdleHit", 1, "IdleHitSeek" ]
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -1199,7 +1199,7 @@ jump_strength = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 11.1362 )
-shape = SubResource( 34 )
+shape = SubResource( 1 )
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
 one_shot = true
@@ -1223,14 +1223,14 @@ offset = Vector2( 11.3853, 40.069 )
 
 [node name="LowerArm" type="Sprite" parent="Body/UpperArm2"]
 position = Vector2( 15.7646, 74.1148 )
-rotation = 2.62044
-scale = Vector2( 1, 1 )
+rotation = 2.62043
 texture = ExtResource( 2 )
 offset = Vector2( -25.6847, -21.5091 )
 
 [node name="Sword" type="Sprite" parent="Body/UpperArm2/LowerArm"]
-position = Vector2( -37.0801, -56.6304 )
+position = Vector2( -37.0804, -56.6302 )
 rotation = -2.59387
+scale = Vector2( 1, 1 )
 texture = ExtResource( 7 )
 offset = Vector2( 30.1201, -64.463 )
 
@@ -1246,7 +1246,7 @@ __meta__ = {
 
 [node name="LowerLeg" type="Sprite" parent="Body/UpperLeg2"]
 position = Vector2( -12.3144, 50.9192 )
-rotation = -0.0585813
+rotation = -0.0585816
 scale = Vector2( 1, 1 )
 texture = ExtResource( 4 )
 offset = Vector2( -6.34961, 12.6992 )
@@ -1438,6 +1438,7 @@ parameters/WalkHitSeek/seek_position = -1.0
 [node name="FloorDetector" type="RayCast2D" parent="."]
 position = Vector2( 0, 32.5269 )
 enabled = true
+cast_to = Vector2( 0, 50 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

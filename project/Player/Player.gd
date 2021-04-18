@@ -73,7 +73,7 @@ func _physics_process(delta:float)->void:
 		if Input.is_action_just_pressed(_action_key+"attack") and _can_attack:
 			_attack()
 		
-		if Input.is_action_just_pressed(_action_key+"smash_attack") and _can_attack:
+		if Input.is_action_just_pressed(_action_key+"smash_attack") and _can_attack and not _is_on_floor():
 			_prepare_smash_attack()
 		
 		if Input.is_action_just_pressed(_action_key+"dash") and _can_dash and _can_attack:
